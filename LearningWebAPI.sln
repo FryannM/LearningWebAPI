@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B058F180-4E26-42A9-9E51-40F44B7AB7F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0AAAD8F7-0317-4FFB-9E5B-817B3020D0FB}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningWebAPI", "src\LearningWebAPI\LearningWebAPI.csproj", "{4EA25EFD-D025-4CD9-8882-88FEB1295353}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningWebAPI.Data", "src\LearningWebAPI.Data\LearningWebAPI.Data.csproj", "{38580DD7-F211-43BE-9D8D-5808885148D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EA25EFD-D025-4CD9-8882-88FEB1295353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EA25EFD-D025-4CD9-8882-88FEB1295353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EA25EFD-D025-4CD9-8882-88FEB1295353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EA25EFD-D025-4CD9-8882-88FEB1295353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38580DD7-F211-43BE-9D8D-5808885148D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38580DD7-F211-43BE-9D8D-5808885148D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38580DD7-F211-43BE-9D8D-5808885148D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38580DD7-F211-43BE-9D8D-5808885148D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4EA25EFD-D025-4CD9-8882-88FEB1295353} = {B058F180-4E26-42A9-9E51-40F44B7AB7F6}
+		{38580DD7-F211-43BE-9D8D-5808885148D8} = {B058F180-4E26-42A9-9E51-40F44B7AB7F6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9DA1919-4E4A-43C7-9C3B-3EF06209B7C3}
+	EndGlobalSection
+EndGlobal
