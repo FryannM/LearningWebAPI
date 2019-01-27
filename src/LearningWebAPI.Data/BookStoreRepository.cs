@@ -36,6 +36,10 @@ namespace LearningWebAPI.Data
             return book;
         }
 
+        public Book FindBook(int id)
+        {
+            return  context.Books.FirstOrDefault(x => x.Id == id);
+        }
         public IList<Author> GetAllAuthors()
         {
             return context.Authors.ToList();
@@ -96,5 +100,7 @@ namespace LearningWebAPI.Data
 
             return true;
         }
+
+       
     }
 }
