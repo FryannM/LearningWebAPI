@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace LearningWebAPI
 {
@@ -14,8 +16,13 @@ namespace LearningWebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BookStoreContext>();
-            services.AddMvc();
+          var mvcBuilder =  services.AddMvc();
+            mvcBuilder.AddJsonOptions(option =>
+            {
+                option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                option.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
+            });
             services.AddScoped<IBookStoreRepository, BookStoreRepository>();
             services.AddTransient<BookContextSeeder>();
         }
