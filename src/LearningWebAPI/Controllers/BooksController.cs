@@ -26,13 +26,14 @@ namespace LearningWebAPI.Controllers
             return new List<string>() { "Fryann", "Martinez" };
         }
 
-        [HttpGet("{id:int}/{includeAuthor:bool?}")]
+        [HttpGet("{id:int}/{includeAuthor:bool?}",Name ="GetBooksById")]
         public Book Get(int id, bool includeAuthor = false)
         {
             return this.repository.FindBook(id, includeAuthor);
         }
         [HttpGet("{id:int}/author")]
-        public Author Get(int id) {
+        public Author Get(int id)
+        {
             return this.repository.FindBook(id,true).Author;
         }
     }

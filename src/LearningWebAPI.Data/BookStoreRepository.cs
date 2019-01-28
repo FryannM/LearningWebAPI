@@ -27,9 +27,9 @@ namespace LearningWebAPI.Data
 
             if (includeAuthor)
             {
-                var book1 = context.Books.Include(b => b.Author).FirstOrDefault<Book>(b => b.Id == _id);
+                var bookWithAuthor = context.Books.Include(b => b.Author).FirstOrDefault<Book>(b => b.Id == _id);
 
-                return book1;
+                return bookWithAuthor;
             }
 
             var book = context.Books.FirstOrDefault<Book>(b => b.Id == _id);
