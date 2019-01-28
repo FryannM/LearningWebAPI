@@ -1,5 +1,6 @@
 ﻿using LearningWebAPI.Data;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace LearningWebAPI.Controllers
@@ -36,5 +37,23 @@ namespace LearningWebAPI.Controllers
         {
             return this.repository.FindBook(id,true).Author;
         }
+
+        [HttpPost]
+        public IActionResult Post([FromBody]Book newBook)
+        {
+            if (newBook == null)
+            {
+                return NotFound(" Error has Occurred");
+            }
+            var book = this.repository.AddBook(newBook);
+
+            if (book == null) {
+                return NotFound("Error Adding  Your Book!");
+            }
+
+            return CreatedAtRoute("GetBooks", new { controller = "Books", id = book.Id }, book);
+        }
+
+      
     }
 }
