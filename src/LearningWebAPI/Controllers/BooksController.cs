@@ -53,5 +53,22 @@ namespace LearningWebAPI.Controllers
 
             return CreatedAtRoute("GetBooks", new { controller = "Books", id = book.Id }, book);
         }
+
+        [HttpPut("{id:int}")]
+         public IActionResult put (int id, [FromBody] Book book)
+        {
+            if (book == null)
+            {
+                return NotFound("Error Has Occurer");
+              
+            }
+           bool bookupdated =   this.repository.UpdateBook(book);
+             if (!bookupdated)
+            {
+                return NotFound("Error Updating the Book");
+            }
+
+            return Ok();
+        }
     }
 }
