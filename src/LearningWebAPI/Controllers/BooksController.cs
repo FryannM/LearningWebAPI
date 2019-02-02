@@ -53,7 +53,5 @@ namespace LearningWebAPI.Controllers
 
             return CreatedAtRoute("GetBooks", new { controller = "Books", id = book.Id }, book);
         }
-
-      
     }
 }
