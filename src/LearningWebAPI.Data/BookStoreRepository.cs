@@ -51,6 +51,7 @@ namespace LearningWebAPI.Data
         }
 
         public IList<Book> GetAllBooks()
+
         {
             return context.Books.ToList();
         }
