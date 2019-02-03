@@ -53,7 +53,7 @@ namespace LearningWebAPI.Controllers
 
             return CreatedAtRoute("GetBooks", new { controller = "Books", id = book.Id }, book);
         }
-
+        [HttpPatch("{id:int}")]
         [HttpPut("{id:int}")]
          public IActionResult put (int id, [FromBody] Book book)
         {
@@ -96,6 +96,9 @@ namespace LearningWebAPI.Controllers
 
           
         }
+
      
+       
+
     }
 }
