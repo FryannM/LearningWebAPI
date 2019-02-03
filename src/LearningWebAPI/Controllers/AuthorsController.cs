@@ -7,15 +7,23 @@ using System.Linq;
 
 namespace LearningWebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     public class AuthorsController : Controller
     {
-        private IBookStoreRepository bookrespositoy;
+        private IBookStoreRepository authorRespository;
     
-        public AuthorsController(IBookStoreRepository _bookStoreRepository)
+        public AuthorsController(IBookStoreRepository _authorRespositoryRepository)
         {
-            this.bookrespositoy = _bookStoreRepository;
+            this.authorRespository = _authorRespositoryRepository;
         }
+
+        [HttpGet("authors")]
+        public IEnumerable<Author> Get()
+        {
+            return this.authorRespository.GetAllAuthors();
+        }
+
+
         [HttpGet("books/{bookid:int}/Author")]
         [HttpGet("authors/{id:int}")]
 
@@ -23,32 +31,20 @@ namespace LearningWebAPI.Controllers
         {
             if (id == null)
             {
-                Book book = this.bookrespositoy.FindBook(bookid, true);
+                Book book = this.authorRespository.FindBook(bookid, true);
                 if (book != null)
                 {
                     return Ok(book.Author);
                 }
-
             }
             else
             {
-                return Ok(this.bookrespositoy.FindAutor(id.Value, true));
+                return Ok(this.authorRespository.FindAutor(id.Value, true));
             }
 
             return NotFound();
         }
-        //[HttpGet("authors")]
-        public IEnumerable<Book> Get(string sort ="Id",string order ="Asc",int pageNo =1,int pageSize =5)
-        {
-            IList<Book> allBooks = this.bookrespositoy.GetAllBooks();
-            var sortedbooks =  allBooks.ApplySorting(sort, order);
-
-            return sortedbooks.Skip((pageNo - 1) * pageSize).Take(pageSize);
-
-     
-
-        } 
-        
+  
     }
-   
+
 }
