@@ -1,10 +1,12 @@
 ﻿using LearningWebAPI.Data;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 
 namespace LearningWebAPI.Controllers
 {
+    [EnableCors("AllowSpecific")]
     [Route("api/books")]
     public class BooksController : Controller
     {
@@ -26,7 +28,7 @@ namespace LearningWebAPI.Controllers
         {
             return new List<string>() { "Fryann", "Martinez" };
         }
-
+        [RequireHttps]
         [HttpGet("{id:int}/{includeAuthor:bool?}",Name ="GetBooksById")]
         public Book Get(int id, bool includeAuthor = false)
         {

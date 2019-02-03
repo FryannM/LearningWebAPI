@@ -23,6 +23,12 @@ namespace LearningWebAPI
                 option.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             });
+            services.AddCors(option => option.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()));
+            services.AddCors(option => option.AddPolicy("AllowSpecific", p => p.WithOrigins("https://localhost:3795")
+            .WithMethods("GET")
+            .WithHeaders("name")));
             services.AddScoped<IBookStoreRepository, BookStoreRepository>();
             services.AddTransient<BookContextSeeder>();
         }
@@ -38,6 +44,7 @@ namespace LearningWebAPI
             }
 
             app.UseMvc();
+            app.UseCors("AllowSpecific");
 
             seeder.Seed();
         }
