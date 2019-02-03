@@ -3,6 +3,7 @@ using LearningWebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 namespace LearningWebAPI.Controllers
 {
@@ -36,13 +37,13 @@ namespace LearningWebAPI.Controllers
 
             return NotFound();
         }
-        [HttpGet("authors")]
-        public IEnumerable<Book> Get(string sort ="Id",string order ="Asc")
+        //[HttpGet("authors")]
+        public IEnumerable<Book> Get(string sort ="Id",string order ="Asc",int pageNo =1,int pageSize =5)
         {
             IList<Book> allBooks = this.bookrespositoy.GetAllBooks();
-            var retorno =  allBooks.ApplySorting(sort, order);
+            var sortedbooks =  allBooks.ApplySorting(sort, order);
 
-            return retorno;
+            return sortedbooks.Skip((pageNo - 1) * pageSize).Take(pageSize);
 
      
 
