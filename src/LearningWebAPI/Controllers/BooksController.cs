@@ -53,7 +53,7 @@ namespace LearningWebAPI.Controllers
 
             return CreatedAtRoute("GetBooks", new { controller = "Books", id = book.Id }, book);
         }
-
+        [HttpPatch("{id:int}")]
         [HttpPut("{id:int}")]
          public IActionResult put (int id, [FromBody] Book book)
         {
@@ -70,5 +70,35 @@ namespace LearningWebAPI.Controllers
 
             return Ok();
         }
+
+        [HttpDelete ("{id:int}")]
+        public IActionResult  delete(int  id)
+        {
+             if (id == 0)
+            {
+                return NotFound("Error has Occurrer deleting this book");
+            }
+            var book = this.repository.FindBook(id,false);
+
+             if (book == null)
+            {
+                return NotFound("Id was no Found");
+            }
+            bool isDeleted = this.repository.DeleteBook(id);
+                 if (isDeleted)
+            {
+                return StatusCode(204);
+            }
+            else
+            {
+                return BadRequest("Error Deleting this book");
+            }
+
+          
+        }
+
+     
+       
+
     }
 }
